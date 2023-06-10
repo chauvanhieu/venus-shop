@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout"
+		template="/WEB-INF/layout/baseLayout.jsp">
+		<put-attribute name="title" value="Trang chủ" />
+		<put-attribute name="header"
+			value="/WEB-INF/layout/_header.jsp" />
+
+		<put-attribute name="body" value="" />
+
+		<put-attribute name="aside"
+			value="/WEB-INF/layout/_aside.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layout/_footer.jsp" />
+	</definition>
+
+
+
+
+	<definition name="index" extends="baseLayout">
+		<put-attribute name="title" value="Home - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/index.jsp" />
+	</definition>
+
+
+	<definition name="about" extends="baseLayout">
+		<put-attribute name="title"
+			value="About us - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/about.jsp" />
+	</definition>
+
+	<definition name="products" extends="baseLayout">
+		<put-attribute name="title"
+			value="Products - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/products.jsp" />
+	</definition>
+
+	<definition name="products" extends="baseLayout">
+		<put-attribute name="title"
+			value="Products - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/products.jsp" />
+	</definition>
+
+	<definition name="why-us" extends="baseLayout">
+		<put-attribute name="title" value="Why us - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/why-us.jsp" />
+	</definition>
+
+	<definition name="testimonial" extends="baseLayout">
+		<put-attribute name="title"
+			value="Testimonial - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/testimonial.jsp" />
+	</definition>
+
+	<definition name="shopping-cart" extends="baseLayout">
+		<put-attribute name="title"
+			value="Shopping cart - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/shopping-cart.jsp" />
+	</definition>
+
+	<definition name="product-single" extends="baseLayout">
+		<put-attribute name="title" value="Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/product-single.jsp" />
+	</definition>
+
+	<definition name="account-information" extends="baseLayout">
+		<put-attribute name="title"
+			value="Account information - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/account-information.jsp" />
+	</definition>
+
+	<definition name="account-orders" extends="baseLayout">
+		<put-attribute name="title"
+			value="Account orders - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/account-orders.jsp" />
+	</definition>
+
+	<definition name="account-password" extends="baseLayout">
+		<put-attribute name="title"
+			value="Account password - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/account-password.jsp" />
+	</definition>
+
+
+	<definition name="adminLayout"
+		template="/WEB-INF/layout/adminLayout.jsp">
+		<put-attribute name="title"
+			value="Venus Shop - Administrator" />
+		<put-attribute name="aside"
+			value="/WEB-INF/layout/admin-aside.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/layout/admin-header.jsp" />
+
+		<put-attribute name="main" value="" />
+
+	</definition>
+
+	<definition name="admin/admin-index" extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-index.jsp" />
+	</definition>
+
+	<definition name="admin/admin-categories"
+		extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-categories.jsp" />
+	</definition>
+
+	<definition name="admin/admin-product" extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-product.jsp" />
+	</definition>
+	
+	<definition name="admin/admin-customer" extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-customer.jsp" />
+	</definition>
+</tiles-definitions>
