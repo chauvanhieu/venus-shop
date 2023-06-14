@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.venus.interceptor.AdminAuthInterceptor;
+import com.venus.interceptor.CountElementShoppingCartInterceptor;
 import com.venus.interceptor.LoginInterceptor;
 
 @Configuration
@@ -16,6 +17,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	LoginInterceptor loginInterceptor;
 	@Autowired
 	AdminAuthInterceptor adminAuthInterceptor;
+	@Autowired
+	CountElementShoppingCartInterceptor countShoppingCartInterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -26,10 +29,14 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
 		// Logined
 		registry.addInterceptor(loginInterceptor).addPathPatterns("/shopping-cart/**", "/account/**")
-				.excludePathPatterns("/", "/product", "/about", "/why-us", "/login", "/testimonial", "/admin/**");
+				.excludePathPatterns("/reset-password", "/forgot-password", "/", "/product", "/about", "/why-us",
+						"/login", "/testimonial", "/admin/**");
 
 		// Kiếm tra đăng nhập trang admin
-		registry.addInterceptor(adminAuthInterceptor).addPathPatterns("/admin/**");
+		registry.addInterceptor(adminAuthInterceptor).addPathPatterns("/admin/**").excludePathPatterns(
+				"/reset-password", "/forgot-password", "/product", "/", "/about", "/why-us", "/login", "/testimonial");
 
+		registry.addInterceptor(countShoppingCartInterceptor).addPathPatterns("/**")
+				.excludePathPatterns("/reset-password", "/forgot-password", "/admin/**");
 	}
 }

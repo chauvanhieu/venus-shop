@@ -19,17 +19,15 @@
 		<form action="/shopping-cart/update/${item.id }">
 		
 			<tr>
-				<th><img alt="${item.image }" src="${item.image }"
+				<th><img alt="${item.image }" class="img-thumbnail" src="${item.image }"
 					style="width: 200px"></th>
-				<td>${item.name }</td>
+				<td><a href="/product/${item.id }">${item.name }</a></td>
 				<td><fmt:formatNumber value="${item.price}" pattern="###,###" /></td>
 				<td>
 					<input style="width: 70px" onblur="this.form.submit()" name="quantity" value="${item.quantity }" type="number"/>
 				</td>
 				<td><fmt:formatNumber value="${item.price * item.quantity}"
 						pattern="###,###" /></td>
-
-
 				<td style="cursor: pointer;"><a
 					href="/shopping-cart/remove/${item.id }"><i
 						class="fa-solid fa-trash-can fa-2xl" style="color: #bb1637;"></i></a></td>

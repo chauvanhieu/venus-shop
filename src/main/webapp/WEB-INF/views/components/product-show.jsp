@@ -13,7 +13,6 @@
 /* width */
 ::-webkit-scrollbar {
 	width: 10px;
-	
 }
 
 /* Track */
@@ -41,7 +40,7 @@
 				<div class="col-sm-6 col-lg-4">
 					<div class="box">
 						<div class="img-box">
-							<img src="http://localhost:8080/images/p1.png" alt=""> <a
+							<img src="${product.image }" alt=""> <a
 								href="/shopping-cart/add/${product.id }" class="add_cart_btn">
 								<span> <s:message code="web.card.add-to-cart" />
 							</span>
@@ -72,24 +71,24 @@
 		</div>
 	</div>
 
-<nav aria-label="Page navigation example "
-	style="width: max-content; margin: 50px auto">
-	<ul class="pagination">
-		<li class="page-item"><a class="page-link"
-			href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=0&limit=${param.limit}">First</a></li>
-		<li class="page-item"><a class="page-link"
-			href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=${pageProduct.number-1 }&limit=${param.limit}">Previous</a></li>
-		<li class="page-item"><a class="page-link" href="#">${pageProduct.number+1 }
-				/ ${pageProduct.totalPages }</a></li>
-		<c:if test="${(pageProduct.number+1)<pageProduct.totalPages }">
+	<nav aria-label="Page navigation example "
+		style="width: max-content; margin: 50px auto">
+		<ul class="pagination">
 			<li class="page-item"><a class="page-link"
-				href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=${pageProduct.number+1 }&limit=${param.limit}">Next</a></li>
+				href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=0&limit=${param.limit}">First</a></li>
 			<li class="page-item"><a class="page-link"
-				href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=${pageProduct.totalPages-1 }&limit=${param.limit}">Last</a></li>
-		</c:if>
+				href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=${pageProduct.number-1 }&limit=${param.limit}">Previous</a></li>
+			<li class="page-item"><a class="page-link" href="#">${pageProduct.number+1 }
+					/ ${pageProduct.totalPages }</a></li>
+			<c:if test="${(pageProduct.number+1)<pageProduct.totalPages }">
+				<li class="page-item"><a class="page-link"
+					href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=${pageProduct.number+1 }&limit=${param.limit}">Next</a></li>
+				<li class="page-item"><a class="page-link"
+					href="/product?keyword=${param.keyword }&range=${param.range }&category_id=${param.category_id }&sort_by=${param.sort_by }&order_by=${param.order_by }&page=${pageProduct.totalPages-1 }&limit=${param.limit}">Last</a></li>
+			</c:if>
 
-	</ul>
-</nav>
+		</ul>
+	</nav>
 </section>
 
 

@@ -17,7 +17,7 @@
 								<p>
 									<s:message code="web.slide.welcome.description" />
 								</p>
-								<a href=""> <s:message code="web.slide.welcome.button" />
+								<a href="/product"> <s:message code="web.slide.welcome.button" />
 								</a>
 							</div>
 						</div>

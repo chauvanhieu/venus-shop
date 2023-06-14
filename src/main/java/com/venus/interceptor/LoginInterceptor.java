@@ -31,7 +31,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 			response.sendRedirect("/store-login");
 			return false;
 		}
-		sessionService.set("countCartElement", shoppingCartService.getCount());
 		return true;
 	}
 }

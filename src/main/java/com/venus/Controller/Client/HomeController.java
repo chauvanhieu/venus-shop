@@ -20,8 +20,8 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String hello() {
-		List<Product> Top12Product = productRepository.findTop12ByStatusOrderByPriceDesc(1);
-		List<Product> ProductSaling = productRepository.findByStatusAndIsSale(1, 1);
+		List<Product> Top12Product = productRepository.findTop12ByStatusOrderByPriceDesc();
+		List<Product> ProductSaling = productRepository.findByStatusAndIsSale();
 		sessionService.set("listProduct", Top12Product);
 		sessionService.set("productSaling", ProductSaling);
 		return "index";

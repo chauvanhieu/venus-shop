@@ -30,13 +30,13 @@ public class UploadService {
 			String originalFilename = file.getOriginalFilename();
 			String extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
 			String randomName = UUID.randomUUID().toString() + extension;
-			String realPath = servletContext.getRealPath("/static/images/");
+			String realPath = servletContext.getRealPath("/images/");
 
 			Path path = Paths.get(realPath + File.separator + randomName);
 			Files.createDirectories(path.getParent());
 			Files.write(path, file.getBytes());
 
-			return request.getContextPath() + "/static/images/" + randomName;
+			return request.getContextPath() + "/images/" + randomName;
 		} catch (IOException e) {
 			throw new RuntimeException("Could not store file " + file.getOriginalFilename(), e);
 		}

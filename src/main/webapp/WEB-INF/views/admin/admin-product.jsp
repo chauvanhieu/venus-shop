@@ -97,7 +97,7 @@ input:checked+.slider:before {
 					placeholder="Tìm kiếm..." value="${param.keyword }">
 			</div>
 			<div class="form-group">
-				<label>Khoảng giá:</label> <select class="form-control"
+				<label>Khoảng giá:</label> <select onchange="this.form.submit()" class="form-control"
 					name="range">
 					<option value="mọi khoảng giá"
 						${param.range == 'mọi khoảng giá' ? 'selected' : '' }>Mọi
@@ -120,7 +120,7 @@ input:checked+.slider:before {
 				</select>
 			</div>
 			<div class="form-group">
-				<label>Danh mục:</label> <select class="form-control"
+				<label>Danh mục:</label> <select onchange="this.form.submit()"  class="form-control"
 					name="category_id">
 					<option value="0">Tất cả</option>
 					<c:forEach var="category" items="${listCategory }">
@@ -151,6 +151,10 @@ input:checked+.slider:before {
 
 			</div>
 			<button class="btn btn-success">Tìm kiếm</button>
+			<a href="/admin/product/create">
+				<button type="button" class="btn btn-primary">Tạo sản
+					phẩm</button>
+			</a>
 		</form>
 	</div>
 
@@ -160,10 +164,10 @@ input:checked+.slider:before {
 				style="background-color: #ffffff; margin: 0 auto; padding: 10px">
 				<div class="product-image col-2">
 					<img alt="product-name" class="img-thumbnail" height="100"
-						src="https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/1/1/11h50.png">
+						src="${item.image }">
 				</div>
 				<div class="product-info col-7">
-					<h3>${item.name }</h3>
+					<a href="/admin/product/edit/${item.id }"><h3>${item.name }</h3></a>
 					<div class="star_container" style="color: #f5c451;">
 						<i class="fa fa-star" aria-hidden="true"></i> <i
 							class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
@@ -181,11 +185,10 @@ input:checked+.slider:before {
 					</h5>
 					<div class="button-group">
 						<form action="/admin/product/update-status" method="post">
-							<input name="id" type="hidden" value="${item.id }">
-							<button class="btn btn-success">Chi tiết</button>
-							<br /> <br /> <label>Đăng bán</label> <label class="switch">
-								<input onchange="this.form.submit()" type="checkbox"
-								name="status" ${item.status==1 ? 'checked':'' }> <span
+							<input name="id" type="hidden" value="${item.id }">  <br /> <br /> <label>Đăng
+								bán</label> <label class="switch"> <input
+								onchange="this.form.submit()" type="checkbox" name="status"
+								${item.status==1 ? 'checked':'' }> <span
 								class="slider round"></span>
 							</label><br /> <br />
 

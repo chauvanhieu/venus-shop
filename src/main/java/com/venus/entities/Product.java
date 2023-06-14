@@ -1,7 +1,6 @@
 package com.venus.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 
 /**
  * The persistent class for the products database table.
@@ -32,37 +31,34 @@ public class Product implements Serializable {
 
 	private int available;
 
-	@Temporal(TemporalType.DATE)
+//	@Temporal(TemporalType.DATE)
 	@Column(name = "created_at")
-	private Date createdAt;
+	private String createdAt;
 
 	private String description;
 
 	private String image;
 
+	@Column(name = "is_sale")
+	private int isSale;
+
+	@NotBlank(message = "Tên không được để trống")
 	private String name;
 
+	@DecimalMin(value = "10000", message = "Giá tối thiểu từ 10.000đ")
 	private double price;
-
-	private int isSale;
 
 	private int status;
 
+	// bi-directional many-to-one association to OrderDetail
 	@OneToMany(mappedBy = "product")
 	private List<OrderDetail> orderDetails;
 
+	// bi-directional many-to-one association to Category
 	@ManyToOne
 	private Category category;
 
 	public Product() {
-	}
-
-	public int getIsSale() {
-		return isSale;
-	}
-
-	public void setIsSale(int isSale) {
-		this.isSale = isSale;
 	}
 
 	public int getId() {
@@ -81,11 +77,11 @@ public class Product implements Serializable {
 		this.available = available;
 	}
 
-	public Date getCreatedAt() {
+	public String getCreatedAt() {
 		return this.createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -103,6 +99,14 @@ public class Product implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public int getIsSale() {
+		return this.isSale;
+	}
+
+	public void setIsSale(int isSale) {
+		this.isSale = isSale;
 	}
 
 	public String getName() {

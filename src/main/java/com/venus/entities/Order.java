@@ -1,60 +1,45 @@
 package com.venus.entities;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the orders database table.
  * 
  */
 @Entity
-@Table(name = "orders")
-@NamedQuery(name = "Order.findAll", query = "SELECT o FROM Order o")
+@Table(name="orders")
+@NamedQuery(name="Order.findAll", query="SELECT o FROM Order o")
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private double amount;
 
-	private String note;
-
 	@Temporal(TemporalType.DATE)
-	@Column(name = "created_at")
+	@Column(name="created_at")
 	private Date createdAt;
+
+	private String note;
 
 	private int status;
 
-	@Column(name = "user_id")
-	private int userId;
-
-	// bi-directional many-to-one association to OrderDetail
-	@OneToMany(mappedBy = "order")
+	//bi-directional many-to-one association to OrderDetail
+	@OneToMany(mappedBy="order")
 	private List<OrderDetail> orderDetails;
 
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
 	public Order() {
-	}
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
 	}
 
 	public int getId() {
@@ -81,20 +66,20 @@ public class Order implements Serializable {
 		this.createdAt = createdAt;
 	}
 
+	public String getNote() {
+		return this.note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
 	public int getStatus() {
 		return this.status;
 	}
 
 	public void setStatus(int status) {
 		this.status = status;
-	}
-
-	public int getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public List<OrderDetail> getOrderDetails() {
@@ -117,6 +102,14 @@ public class Order implements Serializable {
 		orderDetail.setOrder(null);
 
 		return orderDetail;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

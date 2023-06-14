@@ -356,6 +356,8 @@ input {
 				<center>
 					<span style="color: red;">${LoginMessage }</span>
 				</center>
+				<label> <a href="/forgot-password"><p>Forgot password?</p></a>
+				</label>
 				<button type="submit" class="submit">Sign In</button>
 			</form>
 

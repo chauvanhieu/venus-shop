@@ -110,9 +110,12 @@ public class ProductController {
 		} else {
 
 			// Lấy product theo riêng category
-
-			pageProduct = productRepository.findByCategoryAndNameContainingAndStatusAndPriceBetween(category.get(),
-					keyword, 1, min, max, pageable);
+			if (category.get().getStatus() == 1) {
+				pageProduct = productRepository.findByCategoryAndNameContainingAndStatusAndPriceBetween(category.get(),
+						keyword, 1, min, max, pageable);
+			} else {
+				pageProduct = null;
+			}
 
 		}
 

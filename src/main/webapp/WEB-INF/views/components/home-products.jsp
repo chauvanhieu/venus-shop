@@ -21,7 +21,7 @@
 				<div class="col-sm-6 col-lg-4">
 					<div class="box">
 						<div class="img-box">
-							<img src="http://localhost:8080/images/p1.png" alt=""> <a
+							<img src="${product.image }" alt=""> <a
 								href="/shopping-cart/add/${product.id }" class="add_cart_btn"> <span> <s:message
 										code="web.card.add-to-cart" />
 							</span>

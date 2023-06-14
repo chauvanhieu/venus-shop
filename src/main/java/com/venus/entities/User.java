@@ -2,21 +2,19 @@ package com.venus.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 /**
  * The persistent class for the users database table.
@@ -32,37 +30,29 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@NotBlank
-	@NotNull
 	private String address;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "created_at")
 	private Date createdAt;
 
-	@NotBlank
-	@NotNull
-	@Email
 	private String email;
 
-	@NotBlank
-	@NotNull
 	@Column(name = "full_name")
-	@Pattern(regexp = "^[^0-9]+$", message = "Tên không hợp lệ")
 	private String fullName;
 
 	private String password;
 
-	@NotBlank
-	@NotNull
-	@Pattern(regexp = "^\\+?(?:0|84)(?:\\d){9}$", message = "Số điện thoại không hợp lệ")
-	@Size(min = 10, max = 12, message = "Số điện thoại phải có từ 10 đến 12 chữ số")
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
 	private int rule;
 
 	private int status;
+
+	// bi-directional many-to-one association to Order
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Order> orders;
 
 	public User() {
 	}
@@ -137,6 +127,28 @@ public class User implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public List<Order> getOrders() {
+		return this.orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public Order addOrder(Order order) {
+		getOrders().add(order);
+		order.setUser(this);
+
+		return order;
+	}
+
+	public Order removeOrder(Order order) {
+		getOrders().remove(order);
+		order.setUser(null);
+
+		return order;
 	}
 
 }

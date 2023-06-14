@@ -1,36 +1,30 @@
 package com.venus.entities;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * The persistent class for the categories database table.
  * 
  */
 @Entity
-@Table(name = "categories")
-@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
+@Table(name="categories")
+@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private String name;
 
 	private int status;
 
-	// bi-directional many-to-one association to Product
-	@OneToMany(mappedBy = "category")
+	//bi-directional many-to-one association to Product
+	@OneToMany(mappedBy="category")
 	private List<Product> products;
 
 	public Category() {

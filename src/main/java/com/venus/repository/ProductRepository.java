@@ -14,11 +14,13 @@ import com.venus.entities.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-	List<Product> findTop12ByStatusOrderByPriceDesc(int status);
+	@Query("select p from Product p where p.status=1 and p.category.status=1")
+	List<Product> findTop12ByStatusOrderByPriceDesc();
 
 	List<Product> findByStatus(int status);
 
-	List<Product> findByStatusAndIsSale(int status, int isSale);
+	@Query("select p from Product p where p.status=1 and p.category.status=1 and isSale=1")
+	List<Product> findByStatusAndIsSale();
 
 	Page<Product> findByCategoryAndNameContainingAndStatusAndPriceBetween(Category category, String name, int status,
 			double min, double max, Pageable pageable);

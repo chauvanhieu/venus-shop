@@ -87,6 +87,13 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/account-orders.jsp" />
 	</definition>
+	
+	<definition name="account-orders-single" extends="baseLayout">
+		<put-attribute name="title"
+			value="Account orders - Venus Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/account-orders-single.jsp" />
+	</definition>
 
 	<definition name="account-password" extends="baseLayout">
 		<put-attribute name="title"
@@ -124,9 +131,39 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/admin-product.jsp" />
 	</definition>
-	
-	<definition name="admin/admin-customer" extends="adminLayout">
+
+	<definition name="admin/admin-customer"
+		extends="adminLayout">
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/admin-customer.jsp" />
+	</definition>
+
+	<definition name="admin/admin-customer-single"
+		extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-customer-single.jsp" />
+	</definition>
+
+	<definition name="admin/admin-order" extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-order.jsp" />
+	</definition>
+
+	<definition name="admin/admin-product-create"
+		extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-product-create.jsp" />
+	</definition>
+	
+	<definition name="admin/admin-product-edit"
+		extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-product-edit.jsp" />
+	</definition>
+	
+	<definition name="admin/admin-order-single"
+		extends="adminLayout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/admin-order-single.jsp" />
 	</definition>
 </tiles-definitions>

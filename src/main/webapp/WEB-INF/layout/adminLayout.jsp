@@ -39,7 +39,7 @@
 		<div class="container-fluid" style="padding: 0; margin: 0">
 			<div class="row">
 				<div class="admin-aside col-2"
-					style="background-color: #3a4468; height: 100vh;padding-right:0 !important">
+					style="background-color: #3a4468; height: 100vh; padding-right: 0 !important">
 
 					<tiles:insertAttribute name="aside" />
 

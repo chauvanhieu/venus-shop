@@ -1,20 +1,28 @@
 package com.venus.Controller.Client;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.venus.Service.SessionService;
 import com.venus.Service.UserService;
+import com.venus.entities.Order;
 import com.venus.entities.User;
+import com.venus.repository.OrderRepository;
 
 @Controller
 @RequestMapping("/account")
@@ -22,7 +30,8 @@ public class AccountController {
 
 	@Autowired
 	SessionService sessionService;
-
+	@Autowired
+	OrderRepository orderRepository;
 	@Autowired
 	UserService userService;
 
@@ -53,7 +62,22 @@ public class AccountController {
 
 	@GetMapping("/orders")
 	public String orders() {
+		User user = sessionService.get("user");
+		List<Order> listOrder = orderRepository.findByUser(user, Sort.by(Direction.DESC, "createdAt"));
+		sessionService.set("listOrder", listOrder);
 		return "account-orders";
+	}
+
+	@GetMapping("/orders/{id}")
+	public String orders(@PathVariable int id) {
+		Optional<Order> order = orderRepository.findById(id);
+		if (order.isPresent()) {
+			sessionService.set("accountOrderDetail", order.get());
+		} else {
+			return "redirect:/account/orders";
+		}
+
+		return "account-orders-single";
 	}
 
 	@GetMapping("/password")
@@ -86,5 +110,17 @@ public class AccountController {
 		userService.update(user);
 
 		return "redirect:/account";
+	}
+
+	@GetMapping("/orders/cancel/{id}")
+	public String cancel(@PathVariable int id) {
+		Optional<Order> order = orderRepository.findById(id);
+		if (order.isPresent()) {
+			Order o = order.get();
+			o.setStatus(2);
+			orderRepository.save(o);
+		}
+
+		return "redirect:/account/orders";
 	}
 }

@@ -8,7 +8,7 @@
 	<div class="header_top">
 		<div class="container-fluid">
 			<div class="top_nav_container">
-				<div class="contact_nav">
+				<div class="contact_nav" style="color:white">
 					<i class="fa fa-phone" aria-hidden="true"></i> <span> <s:message
 							code="web.header.call" /> : 0352 461 759
 					</span> &nbsp &nbsp &nbsp &nbsp<i class="fa fa-envelope"

@@ -68,6 +68,10 @@ public class ShoppingCartServiceImplement implements ShoppingCartService {
 	@Override
 	public void update(int id, int quantity) {
 		List<CartElement> list = sessionService.get("ShoppingCart");
+		if (quantity < 1) {
+			remove(id);
+			return;
+		}
 		for (CartElement CartElement : list) {
 			if (CartElement.getId() == id) {
 				CartElement.setQuantity(quantity);
@@ -83,6 +87,7 @@ public class ShoppingCartServiceImplement implements ShoppingCartService {
 			CartElement.setQuantity(1);
 		}
 		list.clear();
+		sessionService.set("ShoppingCart", list);
 	}
 
 	@Override
