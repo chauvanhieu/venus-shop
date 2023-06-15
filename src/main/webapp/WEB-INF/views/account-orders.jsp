@@ -49,7 +49,7 @@
 										<span style="color: red; font-weight: bold">Đã hủy</span>
 									</c:when>
 									<c:otherwise>
-										<span style="color: red; font-weight: bold">Chưa thanh
+										<span style="color: red; font-weight: bold">Chờ thanh
 											toán</span>
 									</c:otherwise>
 								</c:choose></td>

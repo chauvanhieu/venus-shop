@@ -27,8 +27,14 @@
 					<c:when test="${accountOrderDetail.status==1 }">
 						<span style="color: green;font-weight: bold">Đã thanh toán</span>
 					</c:when>
+					<c:when test="${accountOrderDetail.status==2 }">
+						<span style="color: red;font-weight: bold">Đơn hàng đã hủy</span>
+						<a href="/account/orders/restore/${accountOrderDetail.id }">
+							<button class="btn btn-primary float-right">Khôi phục</button>
+						</a>
+					</c:when>
 					<c:otherwise>
-						<span style="color: red;font-weight: bold">Chưa thanh toán</span>
+						<span style="color: red;font-weight: bold">Chờ thanh toán</span>
 						<a href="/account/orders/cancel/${accountOrderDetail.id }">
 							<button class="btn btn-danger float-right">Hủy đơn</button>
 						</a>
@@ -61,10 +67,6 @@
 									value="${item.count }" type="number" /></td>
 								<td><fmt:formatNumber
 										value="${item.product.price * item.count}" pattern="###,###" /></td>
-
-
-
-
 							</tr>
 						</form>
 					</c:forEach>

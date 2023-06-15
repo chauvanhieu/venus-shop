@@ -123,4 +123,16 @@ public class AccountController {
 
 		return "redirect:/account/orders";
 	}
+
+	@GetMapping("/orders/restore/{id}")
+	public String restore(@PathVariable int id) {
+		Optional<Order> order = orderRepository.findById(id);
+		if (order.isPresent()) {
+			Order o = order.get();
+			o.setStatus(0);
+			orderRepository.save(o);
+		}
+
+		return "redirect:/account/orders/" + id;
+	}
 }
