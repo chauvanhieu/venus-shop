@@ -35,4 +35,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	@Query("SELECT p from Product p WHERE p.category.status=1 and p.status=1")
 	List<Product> getDataToBuy();
+
 }

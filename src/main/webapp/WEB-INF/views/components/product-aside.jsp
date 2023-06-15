@@ -9,7 +9,7 @@
 			value="${param.keyword }" />
 	</div>
 	<div class="form-group">
-		<label>Khoảng giá:</label> <select class="form-control" name="range">
+		<label>Khoảng giá:</label> <select onchange="this.form.submit()" class="form-control" name="range">
 			<option value="mọi khoảng giá"
 				${param.range == 'mọi khoảng giá' ? 'selected' : '' }>Mọi
 				khoảng giá</option>
@@ -31,7 +31,7 @@
 		</select>
 	</div>
 	<div class="form-group">
-		<label>Danh mục:</label> <select class="form-control"
+		<label>Danh mục:</label> <select onchange="this.form.submit()" class="form-control"
 			name="category_id">
 			<option value="0">Tất cả</option>
 			<c:forEach var="category" items="${listCategory }">

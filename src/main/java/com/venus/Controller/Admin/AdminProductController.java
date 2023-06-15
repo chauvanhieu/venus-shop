@@ -30,6 +30,7 @@ import com.venus.Service.SessionService;
 import com.venus.Service.UploadService;
 import com.venus.entities.Category;
 import com.venus.entities.Product;
+import com.venus.repository.BestSalerReportRepository;
 import com.venus.repository.CategoryRepository;
 import com.venus.repository.ProductRepository;
 
@@ -48,12 +49,16 @@ public class AdminProductController {
 	@Autowired
 	ParamService paramService;
 
+	@Autowired
+	BestSalerReportRepository reportRepository;
+
 	@GetMapping
 	public String index(@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "category_id", defaultValue = "0") int categoryID,
 			@RequestParam(value = "order_by", defaultValue = "DESSC") String orderBy,
 			@RequestParam(value = "sort_by", defaultValue = "price") String sortBy,
 			@RequestParam(value = "range", defaultValue = "mọi khoảng giá") String rangeOption) {
+
 		double min = Double.MIN_VALUE;
 		double max = Double.MAX_VALUE;
 

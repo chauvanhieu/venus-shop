@@ -1,5 +1,6 @@
 package com.venus.Controller.Admin;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.venus.DTO.BestSalerReport;
 import com.venus.Service.SessionService;
 import com.venus.entities.User;
+import com.venus.repository.BestSalerReportRepository;
 import com.venus.repository.UserRepository;
 
 @Controller
@@ -19,6 +22,8 @@ public class AdminController {
 	UserRepository userRepository;
 	@Autowired
 	SessionService sessionService;
+	@Autowired
+	BestSalerReportRepository reportRepository;
 
 	@GetMapping("/admin")
 	public String index() {
@@ -27,6 +32,8 @@ public class AdminController {
 			sessionService.remove("admin");
 			return "redirect:/login";
 		}
+		List<BestSalerReport> report = reportRepository.getBestSellers();
+		sessionService.set("reportData", report);
 		return "admin/admin-index";
 	}
 
