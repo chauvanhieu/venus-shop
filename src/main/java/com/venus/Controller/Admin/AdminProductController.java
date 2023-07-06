@@ -216,6 +216,7 @@ public class AdminProductController {
 	public String handleEdit(Model model, @Valid @ModelAttribute("productAttribute") Product product,
 			BindingResult result, @RequestParam("img") Optional<MultipartFile> photo, @RequestParam int id,
 			@RequestParam("stt") String status, @RequestParam("image") String image) {
+
 		product.setStatus(status != null ? 1 : 0);
 		if (photo.isPresent()) {
 			if (!photo.get().isEmpty()) {

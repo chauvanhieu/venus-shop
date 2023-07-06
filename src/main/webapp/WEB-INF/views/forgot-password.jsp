@@ -36,7 +36,7 @@
 					<p>VenusShop sẽ gửi đến địa chỉ của bạn để xác nhận lấy lại mật khẩu.</p>
 				</div>
 				
-				<button class="btn btn-success">Xác nhận</button>
+				<button    class="btn btn-success">Xác nhận</button>
 			</form>
 		</div>
 	</div>

@@ -328,7 +328,25 @@ input {
 .closebtn:hover {
 	color: black;
 }
+
+a {
+	color: unset
+}
+
+.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
 </style>
+
+<script>
+	function disableSubmitButton(idButton) {
+		var submitButton = document.getElementById(idButton);
+		submitButton.disabled = true;
+		clickedButton.classList.add("disabled");
+		return true;
+	}
+</script>
 </head>
 <body>
 
@@ -356,9 +374,11 @@ input {
 				<center>
 					<span style="color: red;">${LoginMessage }</span>
 				</center>
-				<label> <a href="/forgot-password"><p>Forgot password?</p></a>
+				<label> <a href="/forgot-password"><p>Forgot
+							password?</p></a>
 				</label>
-				<button type="submit" class="submit">Sign In</button>
+				<button 
+					type="submit" class="submit">Sign In</button>
 			</form>
 
 		</div>
@@ -399,7 +419,8 @@ input {
 					</label> <label> <span>Your address</span> <input type="text"
 						name="address" required />
 					</label>
-					<button type="submit" class="submit">Sign Up</button>
+					<button onsubmit="disableSubmitButton('btnlogin')" id="btnlogin"
+						type="submit" class="submit">Sign Up</button>
 				</form>
 
 			</div>

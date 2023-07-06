@@ -30,6 +30,10 @@ public class LoginService {
 			sessionService.set("LoginMessage", "Tài khoản không tồn tại !");
 		} else {
 			if (user.get().getPassword().equals(password)) {
+				if (user.get().getStatus() == 0) {
+					sessionService.set("LoginMessage", "Tài khoản bị khóa !");
+					return;
+				}
 				sessionService.set("user", user.get());
 				sessionService.set("LoginMessage", "");
 				try {

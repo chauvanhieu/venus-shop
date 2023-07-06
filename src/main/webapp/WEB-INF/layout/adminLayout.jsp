@@ -30,7 +30,10 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+
+
 </style>
+
 </head>
 <body>
 	<div id="root" style="background-color: #d7d8dd !important">

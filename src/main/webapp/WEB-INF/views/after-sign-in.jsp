@@ -16,7 +16,7 @@
 			src="https://contenthub-static.grammarly.com/blog/wp-content/uploads/2019/02/bmd-4584.png">
 		<p>Thank you for signing up, please check your email to complete
 			the registration confirmation step!</p>
-		<a href="/"><button class="btn btn-success">OK</button></a>
+		<a href="/"><button   class="btn btn-success">OK</button></a>
 
 	</div>
 </body>

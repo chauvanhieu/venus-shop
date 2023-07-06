@@ -30,13 +30,13 @@
 					<c:when test="${accountOrderDetail.status==2 }">
 						<span style="color: red;font-weight: bold">Đơn hàng đã hủy</span>
 						<a href="/account/orders/restore/${accountOrderDetail.id }">
-							<button class="btn btn-primary float-right">Khôi phục</button>
+							<button  class="btn btn-primary float-right">Khôi phục</button>
 						</a>
 					</c:when>
 					<c:otherwise>
 						<span style="color: red;font-weight: bold">Chờ thanh toán</span>
 						<a href="/account/orders/cancel/${accountOrderDetail.id }">
-							<button class="btn btn-danger float-right">Hủy đơn</button>
+							<button   class="btn btn-danger float-right">Hủy đơn</button>
 						</a>
 					</c:otherwise>
 				</c:choose>

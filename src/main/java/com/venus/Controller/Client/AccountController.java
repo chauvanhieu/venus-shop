@@ -46,8 +46,6 @@ public class AccountController {
 	public String update(Model model, @Valid @ModelAttribute("userAttribute") User user, BindingResult result) {
 		model.addAttribute("userAttribute", user);
 		if (result.hasErrors()) {
-			result.getAllErrors().forEach(item -> System.out.println(item.getDefaultMessage()));
-			result.getAllErrors().forEach(item -> System.out.println(item.getDefaultMessage()));
 			return "account-information";
 		}
 		User mainUser = sessionService.get("user");
