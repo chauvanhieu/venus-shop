@@ -48,6 +48,7 @@ public class ProductConverter {
 		ProductDTO dto = new ProductDTO();
 
 		dto.setId(entity.getId());
+
 		dto.setAvailable(entity.getAvailable());
 		dto.setCreatedAt(entity.getCreatedAt());
 		dto.setDescription(entity.getDescription());

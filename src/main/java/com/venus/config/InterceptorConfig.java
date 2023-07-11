@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.venus.interceptor.AdminAuthInterceptor;
+import com.venus.interceptor.AuthProductInterceptor;
 import com.venus.interceptor.CountElementShoppingCartInterceptor;
 import com.venus.interceptor.LoginInterceptor;
 
@@ -19,6 +20,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	AdminAuthInterceptor adminAuthInterceptor;
 	@Autowired
 	CountElementShoppingCartInterceptor countShoppingCartInterceptor;
+	@Autowired
+	AuthProductInterceptor authProductInterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -38,5 +41,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
 		registry.addInterceptor(countShoppingCartInterceptor).addPathPatterns("/**")
 				.excludePathPatterns("/reset-password", "/forgot-password", "/admin/**");
+
+		registry.addInterceptor(authProductInterceptor).addPathPatterns("/api/products/**");
 	}
 }
